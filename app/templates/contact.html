@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+          <div class="container">
+                <!-- Profile Box -->
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="profile-box">
+                        <div class="profile-top">
+                            <img class="img-circle" id="profile" src="{{ url_for('static', filename='images/headshot.jpg') }}" alt="Portrait of Aidan Knowles">
+                            <h3>Aidan Knowles</h3>
+                            <small><i class="fa fa-location-arrow"></i>&nbsp;&nbsp;&nbsp;&nbsp;Dublin, Ireland</small>
+                        </div>
+                        <div id="contact-details">
+                            <h4><i class="fa fa-graduation-cap"></i><br/>MSc Computer Science 2013/14</h4>
+                            <h4><i class="fa fa-institution"></i><br/>University College Dublin</h4>
+                            <h4><i class="fa fa-envelope"></i><br/><a href="mailto:aidan.knowles@ucdconnect.ie?subject=TweetVibe">aidan.knowles@ucdconnect.ie</a></h4>
+                        </div>
+                        <div id="social">
+                            <a href="http://ie.linkedin.com/pub/aidan-knowles/7a/320/347" title="External link to LinkedIn profile" target="_blank"><i class="fa fa-linkedin-square fa-3x"></i></a>
+                            &nbsp; &nbsp; &nbsp;
+                            <a href="https://github.com/aidanknowles" title="External link to GitHub profile" target="_blank"><i class="fa fa-github-square fa-3x"></i></a>
+                            &nbsp; &nbsp; &nbsp;
+                            <a href="https://plus.google.com/113476670583979454490" title="External link to Google+ profile" target="_blank"><i class="fa fa-google-plus-square fa-3x"></i></a>
+                            &nbsp; &nbsp; &nbsp;
+                            <a href="https://twitter.com/Aidan_Knowles" title="External link to Twitter profile" target="_blank"><i class="fa fa-twitter-square fa-3x"></i></a>
+                        </div>
+                    </div>
+                    </div>
+            </div> <!-- End container -->
+{% endblock %}

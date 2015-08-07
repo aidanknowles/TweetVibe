@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block content %}
+    <div id="trends-back"></div>
+    <div class="container">
+        <div id="trends-header" class="page-header">
+            <h2><i id="trend-graphic" class="fa fa-line-chart"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Trending Vibes</strong></h2>
+        </div>
+
+        <div class="row">
+            <!-- Positive trends -->
+            <div class="col-sm-6">
+                <div id="positive-trends-table">
+                    <div id="pos-trend-panel" class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4><span class="pull-left"><i id="pos-face" class="fa fa-smile-o"></i></span><strong id="pos-header">Good Vibes</strong><span class="pull-right"><i id="pos-arrow" class="fa fa-long-arrow-up"></i></span></h4>
+                        </div>
+                        <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>
+                                        <h5>Position</h5>
+                                    </th>
+                                    <th>
+                                        <h5>Term</h5>
+                                    </th>
+                                    <th>
+                                        <h5 class="trend-score">Sentiment</h5>
+                                    </th>
+                                </tr>
+                                {% set counter = 1 %}
+                                <div id="positive-trend-results">
+                                {% for data in positive_trends['result'] %}
+                                    {% if counter==1 %}
+                                    <tr class="success">
+                                    {% else %}
+                                    <tr>
+                                    {% endif %}
+                                        <td>
+                                            <h5>{{ counter }}</h5>
+                                        </td>
+                                        <td>
+                                            <h5><strong>{{ data['_id'] }}</strong></h5>
+                                        </td>
+                                        <td>
+                                            <h5 class="trend-score">{{ data['average']|round(2) }}</h5>
+                                        </td>
+                                    </tr>
+                                {% set counter = counter + 1 %}
+                                {% endfor %}
+                                </div>
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Negative trends -->
+            <div class="col-sm-6">
+                <div id="negative-trends-table">
+                    <div id="neg-trend-panel" class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4><span class="pull-left"><i id="neg-face" class="fa fa-frown-o"></i></span><strong id="neg-header">Bad Vibes</strong><span class="pull-right"><i id="neg-arrow" class="fa fa-long-arrow-down"></i></span></h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>
+                                        <h5>Position</h5>
+                                    </th>
+                                    <th>
+                                        <h5>Term</h5>
+                                    </th>
+                                    <th>
+                                        <h5 class="trend-score">Sentiment</h5>
+                                    </th>
+                                </tr>
+                                {% set counter = 1 %}
+                                <div id="negative-trend-results">
+                                {% for data in negative_trends['result'] %}
+                                    {% if counter==1 %}
+                                    <tr class="danger">
+                                    {% else %}
+                                    <tr>
+                                    {% endif %}
+                                        <td>
+                                            <h5>{{ counter }}</h5>
+                                        </td>
+                                        <td>
+                                            <h5><strong>{{ data['_id'] }}</strong></h5>
+                                        </td>
+                                        <td>
+                                            <h5 class="trend-score">{{ data['average']|round(2) }}</h5>
+                                        </td>
+                                    </tr>
+                                {% set counter = counter + 1 %}
+                                {% endfor %}
+                                </div>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+
+# TEAM
+
+        *****************************
+        ******  Aidan Knowles  ******
+        *  UCD MSc Comp Sci 2013/14 *
+        *****************************
+
+
+# THANKS
+
+        -- UCD School of Computer Science & Informatics
+        -- John Dunnion
+        -- Tadhg O'Sullivan
+
+
+# TECHNOLOGY COLOPHON
+
+        -- Python 3
+        -- Flask, Werzeug & Jinja2
+        -- HTML5
+        -- CSS3
+        -- PHP
+        -- Javascript & jQuery
+        -- JSON
+        -- MongoDB
+        -- Modernizr
+        -- Bootstrap 3
+        -- FontAwesome
+
+
+# APIs
+
+        -- Twitter REST API v1.1
+        -- AlchemyAPI
+        -- Hightcharts
+
+
+# CLOUD HOSTING
+
+        -- Heroku
+        -- MonogoLab

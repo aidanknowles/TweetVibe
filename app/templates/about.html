@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+            <!-- About -->
+            <div class="container">
+                <div class="about-section">
+                    <div class="page-header" id="about-what-header">
+                        <h2><i class="fa fa-question"></i>&nbsp;&nbsp;&nbsp;&nbsp;<strong>What is <span class="brand">&nbsp;TweetVibe&nbsp;</span>?</strong></h2>
+                    </div>
+                    <div class="about-blurb">
+                        <h3><small>TweetVibe is an experimental opinion mining application which retrieves, processes, classifies and tracks the sentiment of English language Twitter tweets.</small></h3>
+                        <h3><small>The tool can be used to disocver the sentiment for a given keyword, hashtag (within a location radius, if desired) or to analyze a specific user's tweet history. </small></h3>
+                    </div>
+                    <div class="page-header" id="about-who-header">
+                        <h2><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Who is behind it?</strong></h2>
+                    </div>
+                    <div class="about-blurb">
+                        <h3><small>The application was created by a <a href="contact" target="_blank">MSc Computer Science student</a> at the <a href="http://www.csi.ucd.ie/" target="_blank">School of Computer Science and Informatics</a>, University College Dublin, Ireland. </small></h3>
+                    </div>
+                    <div class="page-header" id="about-work-header">
+                        <h2><i class="fa fa-cogs"></i>&nbsp;&nbsp;&nbsp;&nbsp;<strong>How does it work?</strong></h2>
+                    </div>
+                    <div class="about-blurb">
+                        <h3><small>Behind the scenes, Tweetvibe is powered primarily by the Python 3 programming language.</small></h3>
+                        <h3><small>It incorporates the <a href="https://github.com/ryanmcgrath/twython" target="_blank">Twython</a> library, a pure Python wrapper for the Twitter REST API v1.1, in combination with <a href="http://www.alchemyapi.com" target="_blank">AlchemyAPI</a> - a popular, advanced machine learning based natural language processing web service - to perform the retrieval, keyword/entity extraction and sentiment analysis of the tweets.</small></h3>
+                        <h3><small>For rapid web development, deployment and responsive design - the <a href="http://flask.pocoo.org" target="_blank">Flask</a> Python  microframework (with several extensions), Twitter's own <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> frontend HTML/CSS/JS framework and <a href="http://www.highcharts.com/" target="_blank">Highcharts</a> visualization graphics API are utilized.</small></h3>
+                        <h3><small>To store data, the application adopts <a href="http://www.mongodb.org/" target="_blank">MongoDB</a> - a popular document oriented NoSQL database.</small></h3>
+                        <h3><small>Application/Database platform hosting is provided in the cloud by <a href="http://www.heroku.com/" target="_blank">Heroku</a> and <a href="https://mongolab.com/" target="_blank">MongoLab</a>.</small></h3>
+                        <h3><small>For more technology info, check out the project's <a href="humans" target="_blank">humans.txt</a> file.</small></h3>
+                    </div>
+                    <div class="page-header" id="about-sent-header">
+                        <h2><i class="fa fa-book"></i>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Sentiment analysis?</strong></h2>
+                    </div>
+                    <div class="about-blurb">
+                        <h3><small>Sentiment analysis (also known as 'opinion mining') refers to the use of natural language processing, text analysis and computational linguistics to identify and extract subjective information in source materials.</small></h3>
+                        <h3><small>Generally speaking, sentiment analysis aims to determine the attitude of a speaker or a writer with respect to some topic or the overall contextual polarity of a document.</small></h3>
+                        <h3><small>The attitude may be his or her judgment or evaluation, affective state (the emotional state of the author when writing), or the intended emotional communication (the emotional effect the author wishes to have on the reader).</small></h3>
+                        <h4 class="pull-right"><small>--&nbsp; Wikipedia</small></h4>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

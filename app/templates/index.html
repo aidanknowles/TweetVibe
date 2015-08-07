@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+            <!-- Search Box -->
+            <div class="container">
+                <div class="jumbotron">
+                    <h1 id="lead"><i id="tweetvibe-logo" class="fa fa-twitter-square fa-1"></i>TweetVibe</h1>
+                    <p><span id="brand-tag">Feel the world's vibe.</span></p>
+                    <div id="home-search">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                 {% with messages = get_flashed_messages() %}
+                                 {% if messages %}
+                                    {% for message in messages %}
+                                    <div id="flash" class="alert alert-info alert-dismissible" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <i class="fa fa-plug"></i>{{ message }}
+                                    </div>
+                                    {% endfor %}
+                                  {% endif %}
+                                {% endwith %}
+                                <form id="search" method="post" action="{{ url_for("search") }}">
+                                    {{ form.hidden_tag() }}
+                                    <div id="standard-search">
+                                        <div class="input-group input-group-lg">
+                                            {{ form.keyword(id="keywordSearch", autofocus="autofocus", placeholder="Enter a keyword, #hashtag or @username", **{'class':'form-control'}) }}
+                                            <span class="input-group-addon"><span id="search-graphic" class="glyphicon glyphicon-search"></span></span>
+                                        </div>
+                                    </div>
+                                    <div id="adv-hide" hidden>
+                                        <div class="input-group input-group-lg">
+                                            <span id="amount-addon" class="input-group-addon"><span class="glyphicon glyphicon-plus"></span></span>
+                                            {{ form.count(id="tweetCount", placeholder="Amount", **{'class':'form-control'}) }}
+                                            <span id="location-addon" class="input-group-addon"><span class="glyphicon glyphicon-pushpin"></span></span>
+                                            {{ form.location(id="locationSearch", placeholder="Location", **{'class':'form-control'}) }}
+                                        </div>
+                                    </div>
+                                    <div class="search-buttons">
+                                        <button class="btn btn-warning btn-lg" id="go-button" type="submit">Get the Vibe</button>
+                                        <br />
+                                        <a class="btn btn-default" id="adv-button" data-toggle="button"><span id="adv-x" class="glyphicon glyphicon-minus"></span><span id="adv-tick"  hidden><span class="glyphicon glyphicon-ok"></span></span>&nbsp;&nbsp;Advanced</a>
+                                    </div>
+                                </form>
+                            <h4 id="trends-link"><small><a href="trends"><strong><i class="fa fa-line-chart"></i>Discover trending sentiments</strong></a></small></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

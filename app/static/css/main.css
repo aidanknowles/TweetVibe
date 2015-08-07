@@ -1,0 +1,481 @@
+/*==============================================
+                    SITE-WIDE
+================================================*/
+
+
+html, body {
+    height: 100%;
+}
+
+#wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -80px;
+}
+
+#push, footer {
+        height: 80px;
+}
+
+#brand-nav {
+    font-family: lobster;
+    color: #1dcaff;
+}
+
+#tweetvibe-logo {
+    color: #1dcaff !important;
+}
+
+.brand {
+    font-family: lobster;
+}
+
+.text-muted {
+    color: #BBBBBB !important;
+}
+
+footer {
+    margin-top: 10px;
+    width: 100%;
+    position: relative;
+    background-color: #333;
+    text-align: center;
+    opacity: 100;
+}
+
+#footleft {
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+#footleft .fa-heart {
+  color: #FF6666;
+}
+
+#footright {
+    margin-top: 30px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+
+
+
+/*==============================================
+                    HOME PAGE
+================================================*/
+
+
+.jumbotron {
+    margin-top: 100px;
+    text-align: center;
+    opacity: 1;
+    box-shadow: 0 0 30px #4e5d6c;
+    background: #6C8297 !important;
+    border-bottom: 6px solid #4e5d6c;
+    border-radius: 1px !important;
+}
+
+.jumbotron h1 {
+    font-family: lobster;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #f5f5f5 !important;
+}
+
+.jumbotron i {
+    margin-right: 20px;
+}
+
+.jumbotron p a {
+    margin-top: 20px;
+}
+
+.jumbotron .form-group {
+    margin-top: 60px;
+}
+
+#home-search {
+    margin-top: 70px;
+}
+
+#result-search {
+    margin-top: 70px;
+}
+
+.search-buttons {
+    margin-top: 60px;
+}
+
+#go-button {
+    box-shadow: 0 0 3px #999;
+}
+
+#adv-button {
+    margin-top: 20px;
+    box-shadow: 0 0 2px #888;
+}
+
+#adv-tick {
+    color: #669933;
+}
+
+#trends-link a {
+    color: #f5f5f5;
+}
+
+#trends-link {
+    margin-top: 40px;
+}
+
+#flash {
+    border-radius: 3px;
+}
+
+.input-group .form-control:focus {
+    box-shadow: 0 0 12px #1dcaff;
+}
+
+
+/*==============================================
+                    ABOUT PAGE
+================================================*/
+
+
+.about-section {
+    margin-top: 80px;
+    margin-bottom: 125px;
+}
+
+.about-section h2 i {
+    color: #f0ad4e;
+}
+
+.about-blurb {
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+
+
+
+/*==============================================
+                   CONTACT PAGE
+================================================*/
+
+
+.profile-box {
+    background-color: #fff;
+    box-shadow: 0 0 300px #888;
+    text-align: center;
+    position: relative;
+    margin-top: 150px;
+}
+
+.profile-box h3 {
+    font-weight: bold;
+    color: #fff;
+}
+
+#profile {
+    margin-top: -70px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px #888;
+}
+
+.profile-top {
+    color: #fff;
+    background-color: #4F7C92;
+    box-shadow: 0 0 2px #888;
+    padding-bottom: 40px;
+    border-top: 5px solid #df691a;
+}
+
+#social {
+    margin-top: 50px;
+    padding-bottom: 40px;
+}
+
+#contact-details {
+    color: darkslategray;
+    margin-top: 50px;
+}
+
+
+
+
+/*==============================================
+                SEARCH RESULTS PAGE
+================================================*/
+
+
+#summary-negative {
+    box-shadow: 0 0 5px #FF6666;
+    margin-top: 45px;
+    color: grey;
+    border-radius: 5px;
+    background-image: url("../images/white-wall.png");
+    text-align: center;
+}
+
+#summary-positive {
+    margin-top: 45px;
+    box-shadow: 0 0 5px #33CC66;
+    color: grey;
+    text-align: center;
+    background-image: url("../images/white-wall.png");
+    border-radius: 5px;
+}
+
+#summary-neutral {
+    box-shadow: 0 0 5px #FFCC66;
+    margin-top: 45px;
+    color: grey;
+    border-radius: 5px;
+    text-align: center;
+    background-image: url("../images/white-wall.png");
+}
+
+#summary-mixed {
+    box-shadow: 0 0 5px grey;
+    margin-top: 45px;
+    color: grey;
+    border-radius: 5px;
+    text-align: center;
+    background-image: url("../images/white-wall.png");
+}
+
+#present-search-chart {
+    margin-bottom: 30px;
+}
+
+#historical-data-chart {
+    margin-bottom: 30px;
+}
+
+.panel-group a {
+    color: #fff !important;
+}
+
+.panel-icon {
+    color: #00CCFF;
+    margin-right: 20px;
+}
+
+.panel-group {
+    padding-top: 10px;
+    padding-bottom: 40px;
+}
+
+.chart-description {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+#user-img {
+    margin-right: 15px;
+    margin-bottom: 5px;
+    border: 1px solid gray;
+}
+
+#back-arrow {
+    margin-right: 10px;
+}
+
+#search-timer {
+    margin-top: 3px;
+}
+
+#search-again {
+    margin-top: 0px;
+}
+
+#score-overtime-chart {
+    margin-bottom: 30px;
+}
+
+#result-header {
+    margin-bottom: 35px;
+    margin-top: 30px;
+}
+
+.results {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.results .alert {
+    box-shadow: 0 0 1px #888;
+}
+
+.results .alert i {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+
+/*==============================================
+                    TRENDS PAGE
+================================================*/
+
+
+.trend-score {
+    text-align: center;
+}
+
+#trends-header {
+    text-align: center;
+}
+
+#pos-trend-panel
+{
+    margin-top: 25px;
+    box-shadow: 0 0 40px #333;
+    border-radius: 5px;
+}
+
+#neg-trend-panel {
+    margin-top: 25px;
+    box-shadow: 0 0 40px #333;
+    border-radius: 5px;
+}
+
+#neg-arrow {
+    color: #FF6666;
+}
+
+#pos-arrow {
+    color: #33CC66;
+}
+
+#neg-trend-panel .panel-heading {
+    background-image: url("../images/white-wall.png");
+    text-align: center;
+    color: slategray;
+    border-bottom: 2px solid #FF6666;
+}
+
+#pos-trend-panel .panel-heading {
+    background-image: url("../images/white-wall.png");
+    text-align: center;
+    color: slategray;
+    border-bottom: 2px solid #33CC66;
+}
+
+#trend-graphic {
+    color: #1dcaff;
+}
+
+
+/*==============================================
+                 MEDIA QUERIES
+================================================*/
+
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+    #footleft {
+        margin-left: -10px;
+    }
+    #footright {
+        margin-right: -10px;
+    }
+    .profile-box {
+        margin-top: 80px;
+        margin-bottom: 30px;
+    }
+    .about-section {
+        margin-top: -20px;
+        margin-bottom: 25px;
+    }
+    .jumbotron {
+        margin-top: 20px;
+    }
+    #trends-header {
+    margin-top: 0px;
+    }
+}
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+    #footleft {
+        margin-left: 0px;
+    }
+    #footright {
+        margin-right: 0px;
+    }
+    .profile-box {
+        margin-top: 100px;
+        margin-bottom: 30px;
+    }
+    .jumbotron {
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+}
+
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    .profile-box {
+        margin-top: 140px;
+        margin-bottom: 40px;
+    }
+    .about-section {
+        margin-top: 30px;
+        margin-bottom: 40px;
+    }
+    .jumbotron {
+        margin-top: 100px;
+        margin-bottom: 50px;
+    }
+}
+
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+    .profile-box {
+        margin-top: 150px;
+        margin-bottom: 50px;
+    }
+    .about-section {
+        margin-top: 50px;
+        margin-bottom: 80px;
+    }
+    .jumbotron {
+        margin-top: 110px;
+        margin-bottom: 80px;
+    }
+    #trends-header {
+        margin-top: 35px;
+    }
+    #pos-trend-panel {
+        margin-top: 35px;
+    }
+    #neg-trend-panel {
+        margin-top: 35px;
+    }
+
+}
+
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    .profile-box {
+        margin-top: 180px;
+        margin-bottom: 60px;
+    }
+    .about-section {
+        margin-top: 70px;
+        margin-bottom: 90px;
+    }
+    .jumbotron {
+        margin-top: 115px;
+        margin-bottom: 100px;
+    }
+}

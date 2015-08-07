@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <!-- Encoding -->
+        <meta charset="utf-8">
+
+        <!-- Viewport -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <!-- Page title -->
+        {% if page=="search" %}
+        <title>TweetVibe | Search for "{{ keyword }}"</title>
+        {% elif page=="about" %}
+        <title>TweetVibe | About</title>
+        {% elif page=="contact" %}
+        <title>TweetVibe | Contact</title>
+        {% elif page=="trends" %}
+        <title>TweetVibe | Trends</title>
+        {% elif page=="home" %}
+        <title>TweetVibe | Home</title>
+        {% else %}
+        <title>TweetVibe</title>
+        {% endif %}
+
+        <!-- Metatags -->
+        <meta name="keywords" content="Sentiment, Analysis, Twitter, Tweet, Social Media, Mood, Vibe, Feeling">
+        <meta name="description" content="A sentiment analysis tool for Twitter - feel the world's vibe.">
+        <meta name="author" content="Aidan Knowles">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Import main CSS file -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+        <!-- Import Font Awesome CSS via CDN -->
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+        <!-- Import Boostrap CSS via CDN -->
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css">
+
+        <!-- Specify ICO file -->
+        <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.png') }}">
+
+        <!-- Import Lobster Font via Google Fonts -->
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lobster">
+
+        <!-- Import JQuery JS via CDN -->
+        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+        <!-- Import Modernizr JS via CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
+
+        {% if page=="home" %}
+        <!-- Home background image -->
+        <style>
+            html, body {
+                background-image: url("{{  url_for('static', filename='images/home-back.png') }}");
+                background-size: cover;
+                box-shadow: inset 0 0 30px #333;
+            }
+        </style>
+        {% endif %}
+
+        {% if page=="search" %}
+        <!-- Import Highcharts JS -->
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+
+        <!-- Import Highchart Theme JS -->
+        <script src="{{ url_for('static', filename='javascript/highchart-theme.js') }}"></script>
+
+        <!-- Import ChartKick JS -->
+        <script src="{{ url_for('static', filename='javascript/chartkick.js') }}"></script>
+        {% endif %}
+
+        {% if page=="trends" %}
+        <style>
+            html, body {
+            }
+        </style>
+        {% endif %}
+    </head>
+
+    <body>
+
+        <!-- Start page wrap -->
+        <div id="wrapper">
+            <a id="top"></a>
+
+            <!-- Navbar -->
+            <div class="navbar navbar-default">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse"> <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button> <a class="navbar-brand" id="brand-nav" href="{{ url_for('index') }}"><i class="fa fa-twitter"></i>&nbsp;&nbsp;TweetVibe</a>
+                </div>
+                <div class="navbar-collapse collapse navbar-responsive-collapse">
+                    <ul class="nav navbar-nav">
+                        {% if page == "trends" %}
+                        <li class="active"><a href="{{ url_for('trends') }}">Trends</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('trends') }}">Trends</a></li>
+                        {% endif %}
+                        {% if page == "about" %}
+                        <li class="active"><a href="{{ url_for('about') }}">About</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('about') }}">About</a></li>
+                        {% endif %}
+                        {% if page == "contact" %}
+                        <li class="active"><a href="{{ url_for('contact') }}">Contact</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+            {% block content %}{% endblock %}
+
+            <div id="push"></div>
+        </div> <!-- End wrap -->
+
+        <!-- Footer bar -->
+        <footer>
+            <div class="container">
+                <p class="text-muted"><span class="pull-left" id="footleft">Made with&nbsp;&nbsp;<i class="fa fa-heart"></i>&nbsp;&nbsp;in Dublin</span><span class="pull-right" id="footright">&copy; Aidan Knowles 2014</span>
+                </p>
+                <br/>
+                <p><a id="botarrow" href="#top" title="Scroll to top of page"><i class="fa fa-caret-up"> </i></a>
+                </p>
+            </div>
+        </footer>
+
+        <!-- Import Bootstrap JS via CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <!-- Import jqscroll JS -->
+        <script src="{{ url_for('static', filename='javascript/jqscroll.js') }}"></script>
+
+        {% if page=="home" %}
+        <script>
+            $("#go-button").click(function() {
+                var $btn = $(this);
+                $btn.button('loading');
+            });
+
+            $("#adv-button").click(function(){
+                $("#standard-search").toggle();
+                $("#adv-hide").toggle();
+                $("#adv-tick").toggle();
+                $("#adv-x").toggle();
+            });
+
+            $(document).ready(function(){
+                $("#lead").hide().fadeIn(750);
+                $("#brand-tag").hide().fadeIn(2500);
+            });
+        </script>
+        {% elif page=="search" %}
+        <script>
+            $("#overview-toggle").click(function() {
+                $("#overview-arrow").toggleClass("fa-chevron-down fa-chevron-up");
+            });
+
+            $("#visualization-toggle").click(function() {
+                $("#visualization-arrow").toggleClass("fa-chevron-down fa-chevron-up");
+            });
+
+            $("#tweets-toggle").click(function() {
+                $("#tweets-arrow").toggleClass("fa-chevron-up fa-chevron-down");
+            });
+        </script>
+        {% endif %}
+
+        <!-- Google Analytics -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-51139729-2', 'auto');
+            ga('send', 'pageview');
+        </script>
+
+    </body>
+
+</html>

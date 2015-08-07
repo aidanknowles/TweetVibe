@@ -1,0 +1,320 @@
+{% extends "base.html" %}
+{% block content %}
+            <div class="container">
+                {% if location %}
+                <div id="result-header" class="page-header"><h2>Vibe for:&nbsp; <strong>"{{ keyword }}"</strong> near <em> {{ location_search_term }} </em> <span class="pull-right"><i class="fa fa-twitter-square"></i></span></h2></div>
+                <a id="search-again" class="btn btn-default btn-sm" href="index"><i id="back-arrow" class="fa fa-angle-left"></i>New Search&nbsp;&nbsp;&nbsp;<i class="fa fa-search"></i></a>
+                <h4 class="pull-right" id="search-timer"><small>Search took: {{ time_taken|round(2) }} seconds</small></h4>
+                {% if dom_sentiment == "positive" %}
+                <div id="summary-positive" class="well">
+                    <h3 class="lead">{{ location }} [{{ latitude }},{{ longitude }}] feels mostly <strong class="text-success">{{ dom_sentiment }}</strong> about "{{ keyword }}"</h3>
+                {% elif dom_sentiment == "negative" %}
+                <div id="summary-negative" class="well">
+                    <h3 class="lead">{{ location }} [{{ latitude }},{{ longitude }}] feels mostly <strong class="text-danger">{{ dom_sentiment }}</strong> about "{{ keyword }}"</h3>
+                {% elif dom_sentiment == "neutral" %}
+                <div id="summary-neutral" class="well">
+                    <h3 class="lead">{{ location }} [{{ latitude }},{{ longitude }}] feels mostly <strong class="text-warning">{{ dom_sentiment }}</strong> about "{{ keyword }}"</h3>
+                {% else %}
+                <div id="summary-mixed" class="well">
+                    <h3 class="lead">{{ location }} [{{ latitude }},{{ longitude }}] feels <strong>{{ dom_sentiment }}</strong> about "{{ keyword }}"</h3>
+                {% endif %}
+                {% elif user %}
+                <div id="result-header" class="page-header"><h2>Vibe for user:&nbsp; <strong>{{ user }}</strong><span class="pull-right"><i class="fa fa-twitter-square"></i></span></h2></div>
+                <a id="search-again" class="btn btn-default btn-sm" href="index"><i id="back-arrow" class="fa fa-angle-left"></i>New Search&nbsp;&nbsp;&nbsp;<i class="fa fa-search"></i></a>
+                <h4 class="pull-right" id="search-timer"><small>Search took: {{ time_taken|round(2) }} seconds</small></h4>
+                {% if dom_sentiment == "positive" %}
+                <div id="summary-positive" class="well">
+                    <h3 class="lead"><img id="user-img" class="img-circle" src="{{ results[0].profile_image_url }}"><a href="https://twitter.com/{{ user }}">{{ user }}</a> ({{ results[0].tweet_user_fullname }})&nbsp; is mostly <strong class="text-success">{{ dom_sentiment }}</strong></h3>
+                {% elif dom_sentiment == "negative" %}
+                <div id="summary-negative" class="well">
+                    <h3 class="lead"><img id="user-img" class="img-circle" src="{{ results[0].profile_image_url }}"><a href="https://twitter.com/{{ user }}">{{ user }}</a> ({{ results[0].tweet_user_fullname }})&nbsp; is mostly <strong class="text-danger">{{ dom_sentiment }}</strong></h3>
+                {% elif dom_sentiment == "neutral" %}
+                <div id="summary-neutral" class="well">
+                    <h3 class="lead"><img id="user-img" class="img-circle" src="{{ results[0].profile_image_url }}"><a href="https://twitter.com/{{ user }}">{{ user }}</a> ({{ results[0].tweet_user_fullname }})&nbsp; is mostly <strong class="text-warning">{{ dom_sentiment }}</strong></h3>
+                {% else %}
+                <div id="summary-mixed" class="well">
+                    <h3 class="lead"><img id="user-img" class="img-circle" src="{{ results[0].profile_image_url }}"><a href="https://twitter.com/{{ user }}">{{ user }}</a> ({{ results[0].tweet_user_fullname }})&nbsp; is <strong>{{ dom_sentiment }}</strong></h3>
+                {% endif %}
+                {% else %}
+                <div id="result-header" class="page-header"><h2>Vibe for:&nbsp; <strong>"{{ keyword }}"</strong><span class="pull-right"><i class="fa fa-twitter-square"></i></span></h2></div>
+                <a id="search-again" class="btn btn-default btn-sm" href="index"><i id="back-arrow" class="fa fa-angle-left"></i>New Search&nbsp;&nbsp;&nbsp;<i class="fa fa-search"></i></a>
+                <h4 class="pull-right" id="search-timer"><small>Search took: {{ time_taken|round(2) }} seconds</small></h4>
+                {% if dom_sentiment == "positive" %}
+                <div id="summary-positive" class="well">
+                    <h3 class="lead">Twitter feels mostly <strong class="text-success">{{ dom_sentiment }}</strong> about "{{ keyword }}"</h3>
+                {% elif dom_sentiment == "negative" %}
+                <div id="summary-negative" class="well">
+                    <h3 class="lead">Twitter feels mostly <strong class="text-danger">{{ dom_sentiment }}</strong> about "{{ keyword }}"</h3>
+                {% elif dom_sentiment == "neutral" %}
+                <div id="summary-neutral" class="well">
+                    <h3 class="lead">Twitter feels mostly <strong class="text-warning">{{ dom_sentiment }}</strong> about "{{ keyword }}"</h3>
+                {% else %}
+                <div id="summary-mixed" class="well">
+                    <h3 class="lead">Twitter feels <strong>{{ dom_sentiment }}</strong> about "{{ keyword }}"</h3>
+                {% endif %}
+                {% endif %}
+                </div>
+                <div class="panel-group" id="accordion">
+                    <div id="overview-panel" class="panel panel-default">
+                        <div id="overview-nav" class="panel-heading">
+                            <a id="overview-toggle" data-toggle="collapse" data-parent="#accoridon" href="#overview"><h4><strong><span class="panel-icon"><i class="fa fa-flag"></i></span>Results Overview</strong><span class="pull-right"><i id="overview-arrow" class="fa fa-chevron-up"></i></span></h4></a>
+                        </div>
+                        <div id="overview" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table class="table table-striped table-hover">
+                                <tr>
+                                    <td>
+                                        <h4>Tweets searched for:</h4>
+                                    </td>
+                                    <td>
+                                        <h4><strong>{{ search_count }}</strong></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>Tweets found:</h4>
+                                    </td>
+                                    <td>
+                                        <h4><strong>{{ search_stats['Total'] }}</strong></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>Tweets positive:</h4>
+                                    </td>
+                                    <td>
+                                        <h4><strong>{{ search_aggregate[0][1] }}&nbsp;&nbsp;({{ search_stats['%Positive'] }}%)</strong></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>Tweets neutral:</h4>
+                                    </td>
+                                    <td>
+                                        <h4><strong>{{ search_aggregate[1][1] }}&nbsp;&nbsp;({{ search_stats['%Neutral'] }}%)</strong></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>Tweets negative:</h4>
+                                    </td>
+                                    <td>
+                                        <h4><strong>{{ search_aggregate[2][1] }}&nbsp;&nbsp;({{ search_stats['%Negative'] }}%)</strong></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>Sentiment score (avg):</h4>
+                                    </td>
+                                    <td>
+                                        <h4><strong>{{ search_avg }}</strong></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>Historical sentiment score (avg):</h4>
+                                    </td>
+                                    <td>
+                                        <h4><strong>{{ hist_avg }}</strong></h4>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                    <div class="panel panel-default">
+                        <div id="visualization-nav" class="panel-heading">
+                            <a id="visualization-toggle" data-toggle="collapse" data-parent="#accoridon" href="#visualization"><h4><strong><span class="panel-icon"><i class="fa fa-bar-chart"></i></span>Data Visualization</strong><span class="pull-right"><i id="visualization-arrow" class="fa fa-chevron-up"></i></span></h4></a>
+                        </div>
+                        <div id="visualization" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                                <div class="charts">
+                                    <div class="row">
+                                    <div id="present-search-chart" class="col-sm-6">
+                                        <div class="chart-description">
+                                        <h4><strong>Search sentiment</strong></h4>
+                                        <h5>{% if user %}{{ user }}{% else %}"{{ keyword }}"{% if location %} near <em> {{ location_search_term }} </em>{% endif %}{% endif %}</h5></div>
+                                        {% column_chart search_aggregate with library=
+                                                {
+                                                    "chart":
+                                                        {
+                                                            "borderWidth":1,
+                                                            "borderRadius":0,
+                                                            "borderColor":"#ccc",
+                                                            "spacingBottom":35,
+                                                            "spacingTop":40,
+                                                            "spacingLeft":25,
+                                                            "spacingRight":30
+                                                        },
+                                                    "yAxis":
+                                                        {
+                                                            "title": {
+                                                                "text": "<b>Tweet Count</b>",
+                                                                "margin": 20
+                                                            }
+                                                    },
+                                                    "plotOptions":
+                                                        {
+                                                        "column": {
+                                                            "colorByPoint": True
+                                                        }
+                                                    },
+                                                    "colors": [
+                                                            "#33CC66", "#FFCC66", "#FF6666"
+                                                    ],
+                                                    "tooltip":
+                                                        {
+                                                            "pointFormat":  '{point.name}</span><b>{point.y}</b> Tweet(s)<br/>',
+                                                            "borderWidth": 1
+                                                        },
+                                                    "credits":
+                                                        {
+                                                            "enabled":true,
+                                                            "text":"TweetVibe",
+                                                            "href":"http://tweetvibe.herokuapp.com"
+                                                        }
+                                                }
+                                        %}
+                                    </div>
+                                    <div id="historical-data-chart" class="col-sm-6">
+                                        <div class="chart-description">
+                                        <h4><strong>Historic sentiment</strong></h4>
+                                        <h5>{% if user %}{{ user }}{% else %}"{{ keyword }}"{% if location %} near <em>{{ location_search_term }}</em>{% endif %}{% endif %}</h5></div>
+                                        {% pie_chart hist_data with library=
+                                                {
+                                                    "chart":
+                                                        {
+                                                            "borderWidth":1,
+                                                            "borderRadius":0,
+                                                            "borderColor":"#ccc",
+                                                            "spacingBottom":20,
+                                                            "spacingTop":20,
+                                                            "spacingLeft":15,
+                                                            "spacingRight":15
+                                                        },
+                                                    "tooltip":
+                                                        {
+                                                            "pointFormat": '<b>{point.percentage:.1f}%</b> of Tweets ',
+                                                            "borderWidth": 1
+                                                        },
+                                                    "plotOptions": {
+                                                        "pie": {
+                                                            "allowPointSelect": true,
+                                                            "cursor": 'pointer',
+                                                            "depth": 45,
+                                                            "innerSize": 100,
+                                                            "colorByPoint": true,
+                                                            "dataLabels": {
+                                                                "enabled": true,
+                                                                "format": '<b>{point.name}</b>:<br/> {point.percentage:.1f} %',
+                                                            }
+                                                        }
+                                                    },
+                                                    "colors": [
+                                                            "#33CC66", "#FFCC66", "#FF6666"
+                                                    ],
+                                                    "credits":
+                                                        {
+                                                            "enabled":true,
+                                                            "text":"TweetVibe",
+                                                            "href":"http://tweetvibe.herokuapp.com"
+                                                        }
+                                                }
+                                        %}
+                                    </div>
+                                    </div>
+                                    {% if overtime_data %}
+                                    <div id="score-overtime-chart">
+                                    <div class="chart-description">
+                                        <h4><strong>10 Day Vibe</strong></h4>
+                                        <h5>{% if user %}{{ user }}{% else %}"{{ keyword }}"{% if location %} near <em>{{ location_search_term }}</em>{% endif %}{% endif %}</h5>
+                                    </div>
+                                    {% area_chart overtime_data with library=
+                                            {
+                                                "chart":
+                                                    {
+                                                        "borderWidth":1,
+                                                        "borderRadius":5,
+                                                        "borderColor":"#ccc",
+                                                        "spacingBottom":35,
+                                                        "spacingTop":40,
+                                                        "spacingLeft":30,
+                                                        "spacingRight":30
+                                                    },
+                                                "yAxis":
+                                                    {
+                                                        "title": {
+                                                            "text": "<b>Sentiment Score (avg)</b> ",
+                                                            "margin": 25
+                                                        }
+                                                    },
+                                                "plotOptions":
+                                                    {
+                                                        "series": {
+                                                            "marker": {
+                                                                "enabled": True,
+                                                                "fillColor": "#0099CC"
+                                                            }
+                                                        }
+                                                    },
+                                                "tooltip":
+                                                    {
+                                                    "pointFormat":  '{point.name}Sentiment (avg): <b>{point.y}</b><br/>',
+                                                    "borderWidth": 1
+                                                    },
+                                                "colors": [
+                                                        "#00CCFF"
+                                                ],
+                                                "credits":
+                                                    {
+                                                        "enabled":true,
+                                                        "text":"TweetVibe",
+                                                        "href":"http://tweetvibe.herokuapp.com"
+                                                    }
+                                            }
+                                    %}
+                                </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div id="tweets-nav" class="panel-heading">
+                            <a id="tweets-toggle" data-toggle="collapse" data-parent="#accoridon" href="#tweets"><h4><strong><span class="panel-icon"><i class="fa fa-comments"></i></span>Tweets</strong><span class="pull-right"><i id="tweets-arrow" class="fa fa-chevron-down"></i></span></h4></a>
+                        </div>
+                        <div id="tweets" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="results">
+                                {% for tweet in results %}
+                                    {% if tweet.sentiment_type == "positive" %}
+                                    <div class="alert alert-success alert-dismissible">
+                                    {% elif tweet.sentiment_type == "negative" %}
+                                    <div class="alert alert-danger alert-dismissible">
+                                    {% else %}
+                                    <div class="alert alert-warning alert-dismissible">
+                                    {% endif %}
+                                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4><strong><a href="https://twitter.com/{{ tweet.tweet_user }}">{{ tweet.tweet_user }}</a></strong> : {{ tweet.tweet_text }} </h4>
+                                        {% if tweet.sentiment_type == "positive" %}
+                                        <i class="fa fa-smile-o fa-1x">&nbsp;&nbsp;&nbsp;{{ tweet.sentiment_score }}</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <i class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;{{ tweet.calc_time_ago() }}
+                                        <span class="pull-right"><a href="https://twitter.com/{{ tweet.tweet_user }}/status/{{ tweet.tweet_id }}" target="_blank"><i class="fa fa-link"></i></a></span>
+                                        {% elif tweet.sentiment_type == "negative" %}
+                                        <i class="fa fa-frown-o fa-1x">&nbsp;&nbsp;&nbsp;{{ tweet.sentiment_score }}</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <i class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;{{ tweet.calc_time_ago() }}
+                                        <span class="pull-right"><a href="https://twitter.com/{{ tweet.tweet_user }}/status/{{ tweet.tweet_id }}" target="_blank"><i class="fa fa-link"></i></a></span>
+                                        {% else %}
+                                        <i class="fa fa-meh-o fa-1x">&nbsp;&nbsp;&nbsp;{{ tweet.sentiment_score }}</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <i class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;{{ tweet.calc_time_ago() }}
+                                        <span class="pull-right"><a href="https://twitter.com/{{ tweet.tweet_user }}/status/{{ tweet.tweet_id }}" target="_blank"><i class="fa fa-link"></i></a></span>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+{% endblock %}
