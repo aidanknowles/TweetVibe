@@ -30,10 +30,10 @@ For more technology info, check out the project's humans.txt file.
 
 ### Sentiment analysis?
 
+(from Wikipedia)
+
 Sentiment analysis (also known as 'opinion mining') refers to the use of natural language processing, text analysis and computational linguistics to identify and extract subjective information in source materials.
 
 Generally speaking, sentiment analysis aims to determine the attitude of a speaker or a writer with respect to some topic or the overall contextual polarity of a document.
 
 The attitude may be his or her judgment or evaluation, affective state (the emotional state of the author when writing), or the intended emotional communication (the emotional effect the author wishes to have on the reader).
-
---  Wikipedia
